@@ -257,20 +257,37 @@ function isLogin()
 //[db][common] DBへの接続準備
 function dbConnect()
 {
-   $dsn = 'mysql:dbname=wk_fleamarket;host=localhost;charset=utf8';
-   $user = 'root';
-   $password = 'root';
-   $options = array(
-      // SQL実行失敗時にはエラーコードのみ設定
-      PDO::ATTR_ERRMODE => PDO::ERRMODE_SILENT,
-      // デフォルトフェッチモードを連想配列形式に設定
-      PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_ASSOC,
-      // バッファードクエリを使う(一度に結果セットをすべて取得し、サーバー負荷を軽減)
-      // SELECTで得た結果に対してもrowCountメソッドを使えるようにする
-      PDO::MYSQL_ATTR_USE_BUFFERED_QUERY => true,
-   );
-   $dbh = new PDO($dsn, $user, $password, $options);
-   return $dbh;
+   if ($_SERVER['SERVER_NAME'] == 'localhost') {
+      $dsn = 'mysql:dbname=wk_fleamarket;host=localhost;charset=utf8';
+      $user = 'root';
+      $password = 'root';
+      $options = array(
+         // SQL実行失敗時にはエラーコードのみ設定
+         PDO::ATTR_ERRMODE => PDO::ERRMODE_SILENT,
+         // デフォルトフェッチモードを連想配列形式に設定
+         PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_ASSOC,
+         // バッファードクエリを使う(一度に結果セットをすべて取得し、サーバー負荷を軽減)
+         // SELECTで得た結果に対してもrowCountメソッドを使えるようにする
+         PDO::MYSQL_ATTR_USE_BUFFERED_QUERY => true,
+      );
+      $dbh = new PDO($dsn, $user, $password, $options);
+      return $dbh;
+   } else {
+      $dsn = 'mysql:dbname=fleamarket;host=mysql57.limegoat6.sakura.ne.jp;charset=utf8';
+      $user = 'limegoat6';
+      $password = 'Arumajiro999';
+      $options = array(
+         // SQL実行失敗時にはエラーコードのみ設定
+         PDO::ATTR_ERRMODE => PDO::ERRMODE_SILENT,
+         // デフォルトフェッチモードを連想配列形式に設定
+         PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_ASSOC,
+         // バッファードクエリを使う(一度に結果セットをすべて取得し、サーバー負荷を軽減)
+         // SELECTで得た結果に対してもrowCountメソッドを使えるようにする
+         PDO::MYSQL_ATTR_USE_BUFFERED_QUERY => true,
+      );
+      $dbh = new PDO($dsn, $user, $password, $options);
+      return $dbh;
+   }
 }
 
 //[db][common] DB実行
