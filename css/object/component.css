@@ -1,0 +1,151 @@
+/* 見出し */
+.c-h2 {
+	font-weight: bold;
+	font-size: 3rem;
+}
+.c-h3 {
+	font-size: 1.8rem;
+}
+.c-h4 {
+	display: inline-block;
+	margin: 3px 0;
+	font-weight: 200;
+	font-size: 1.5rem;
+}
+
+/* テキスト（記入欄） */
+.c-text {
+	padding: 10px;
+	border: none;
+	border-radius: 5px;
+	background: #f0f3f5;
+	font-size: 1.5rem;
+}
+.c-select {
+	padding-left: 5px;
+	border-radius: 5px;
+	background: #f0f3f5;
+	font-size: 1.5rem;
+}
+
+/* ボタン */
+.c-btn {
+	border: none;
+	border-radius: 5px;
+	color: #fff;
+	text-decoration: none;
+}
+.c-rtnBtn {
+	display: inline-block;
+	margin: 15px 0;
+	color: #000;
+	text-decoration: none;
+	font-size: 1.5rem;
+}
+
+/* 商品カード */
+.c-prodUnit {
+	position: relative;
+	display: block;
+	overflow: hidden;
+	margin: 0 20px 25px 0;
+	width: 180px;
+	border-radius: 5px;
+	box-shadow: 2px 2px 7px rgb(185, 185, 185);
+	color: #000;
+	text-decoration: none;
+}
+.c-prodUnit:hover {
+	transition: 0.3s;
+	transform: scale(1.05);
+}
+.c-prodHead {
+	position: relative;
+	width: 180px;
+	height: 135px;
+	font-size: 0;
+}
+.c-prodImg {
+	position: absolute;
+	bottom: 0;
+	width: 100%;
+}
+.c-prodBody {
+	padding: 10px;
+	height: 50px;
+	background: rgb(246, 246, 246);
+}
+.c-prodName {
+	margin: 0;
+	font-size: 1.2rem;
+	line-height: 1.7rem;
+}
+.c-prodPrice {
+	position: absolute;
+	top: 77px;
+	left: -9px;
+	padding: 4px 15px 4px 21px;
+	border-radius: 20px;
+	background: rgba(0, 0, 0, 0.4);
+	color: #fff;
+	font-size: 1.5rem;
+}
+
+/* paging */
+.c-paging {
+	text-align: center;
+}
+.c-paging > ul {
+	display: inline-block;
+	padding: 0;
+	list-style: none;
+}
+.c-pagingItem {
+	float: left;
+	margin-right: 5px;
+	padding: 1rem;
+	border-radius: 3px;
+	background: #f0f3f5;
+}
+.c-pagingItem:last-child {
+	margin-right: 0;
+}
+.c-pagingItem {
+	text-decoration: none;
+}
+.c-pagingItem > li {
+	color: #000;
+	font-size: 1.5rem;
+}
+.c-pagingItem.is-active {
+	background: #000;
+}
+.c-pagingItem.is-active > li {
+	color: #fff;
+}
+
+/* エラーメッセージ */
+.c-errMsg {
+	display: inline-block;
+	margin-left: 10px;
+	color: red;
+	font-size: 1.5rem;
+}
+.c-errArea {
+	background: rgb(255, 204, 204);
+}
+
+/* jQueryメッセージ一時的に表示 */
+.c-msgSlide {
+	position: fixed;
+	top: 0;
+	display: none;
+	margin: 0;
+	width: 100%;
+	height: 40px;
+	background-color: rgba(255, 250, 81, 0.65);
+	text-align: center;
+	font-weight: bold;
+	font-size: 1.5rem;
+	line-height: 40px;
+}

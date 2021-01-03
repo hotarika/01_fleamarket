@@ -1,0 +1,45 @@
+/* clearfix */
+.u-cf::after {
+	display: block;
+	clear: both;
+	content: "";
+}
+
+/* 画像のサイズを調整 */
+.u-ajustImg {
+	position: absolute;
+	top: 0;
+	right: 0;
+	bottom: 0;
+	left: 0;
+	margin: auto;
+	max-width: 100%;
+	max-height: 100%;
+	width: auto;
+	height: auto;
+
+	-o-object-fit: contain;
+	object-fit: contain;
+}
+
+/* プレースホルダーの色 */
+.u-ph::-webkit-input-placeholder {
+	color: #bdbdbd;
+}
+.u-ph::-moz-placeholder {
+	color: #bdbdbd;
+}
+.u-ph:-ms-input-placeholder {
+	color: #bdbdbd;
+}
+.u-ph::-ms-input-placeholder {
+	color: #bdbdbd;
+}
+.u-ph::placeholder {
+	color: #bdbdbd;
+}
+
+.u-noImgBgc {
+	background-color: #a2a4a5;
+	/* <?php if (empty($val['img1'])) echo 'u-noImgBgc'; ?> */
+}
