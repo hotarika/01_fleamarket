@@ -273,7 +273,7 @@ function dbConnect()
       $dbh = new PDO($dsn, $user, $password, $options);
       return $dbh;
    } else {
-      $dsn = 'mysql:dbname=fleamarket;host=mysql57.limegoat6.sakura.ne.jp;charset=utf8';
+      $dsn = 'mysql:dbname=limegoat6_fleamarket;host=mysql57.limegoat6.sakura.ne.jp;charset=utf8';
       $user = 'limegoat6';
       $password = 'Arumajiro999';
       $options = array(
