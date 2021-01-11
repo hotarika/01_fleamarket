@@ -48,6 +48,8 @@ if (!empty($_POST)) {
 
             header("Location:a-mypage.php");
             exit();
+         } else {
+            $err_msg['email'] = MSG09;
          }
       } catch (Exception $e) {
          print "接続エラー:{$e->getMessage()}";
