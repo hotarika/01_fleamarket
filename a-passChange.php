@@ -10,9 +10,9 @@ $userData = getUser($_SESSION['user_id']);
 // $_POST送信された場合
 if (!empty($_POST)) {
    // 変数にユーザー情報を代入
-   $oldPass = $_POST['oldPass'];
-   $newPass = $_POST['newPass'];
-   $reNewPass = $_POST['reNewPass'];
+   $oldPass = trim($_POST['oldPass']);
+   $newPass = trim($_POST['newPass']);
+   $reNewPass = trim($_POST['reNewPass']);
 
    // 未入力チェック
    validRequired($oldPass, 'oldPass');
@@ -104,19 +104,19 @@ require('common/head.php');
                <label for="oldPass" class="pm-passChange__label -oldPass">
                   <h4 class="c-h4 pm-passChange__heading2">古いパスワード</h4>
                   <div class="c-errMsg"><?= getErrMsg('oldPass'); ?></div>
-                  <input type="text" name="oldPass" value="<?php if (!empty($_POST['oldPass'])) echo $_POST['oldPass']; ?>" id="oldPass" class="c-text pm-passChange__text -oldPass <?php if (!empty($err_msg['oldPass'])) echo 'c-errArea' ?>">
+                  <input type="password" name="oldPass" value="<?php if (!empty($_POST['oldPass'])) echo $_POST['oldPass']; ?>" id="oldPass" class="c-text pm-passChange__text -oldPass <?php if (!empty($err_msg['oldPass'])) echo 'c-errArea' ?>">
                </label>
                <!-- new pass -->
                <label for="newPass" class="pm-passChange__label -newPass">
                   <h4 class="c-h4 pm-passChange__heading2">新しいパスワード</h4>
                   <div class="c-errMsg"><?= getErrMsg('oldPass'); ?></div>
-                  <input type="text" name="newPass" value="<?php if (!empty($_POST['newPass'])) echo $_POST['newPass']; ?>" id="newPass" class="c-text pm-passChange__text -newPass <?php if (!empty($err_msg['oldPass'])) echo 'c-errArea' ?>">
+                  <input type="password" name="newPass" value="<?php if (!empty($_POST['newPass'])) echo $_POST['newPass']; ?>" id="newPass" class="c-text pm-passChange__text -newPass <?php if (!empty($err_msg['oldPass'])) echo 'c-errArea' ?>">
                </label>
                <!-- retype new pass  -->
                <label for="reNewPass" class="pm-passChange__label -reNewPass">
                   <h4 class="c-h4 pm-passChange__heading2">新しいパスワード（再入力）</h4>
                   <div class="c-errMsg"><?= getErrMsg('oldPass'); ?></div>
-                  <input type="text" name="reNewPass" value="<?php if (!empty($_POST['reNewPassPass'])) echo $_POST['reNewPass']; ?>" id="reNewPass" class="c-text pm-passChange__text -reNewPass <?php if (!empty($err_msg['oldPass'])) echo 'c-errArea' ?>">
+                  <input type="password" name="reNewPass" value="<?php if (!empty($_POST['reNewPassPass'])) echo $_POST['reNewPass']; ?>" id="reNewPass" class="c-text pm-passChange__text -reNewPass <?php if (!empty($err_msg['oldPass'])) echo 'c-errArea' ?>">
                </label>
                <!-- submit button -->
                <input type="submit" value="変更する" class="c-btn pm-passChange__submit">

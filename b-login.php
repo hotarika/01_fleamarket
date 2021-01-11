@@ -5,8 +5,8 @@ require('f-function.php');
 // $_POST送信された場合
 if (!empty($_POST)) {
    // 変数にユーザー情報を代入
-   $email = $_POST['email'];
-   $pass = $_POST['pass'];
+   $email = trim($_POST['email']);
+   $pass = trim($_POST['pass']);
    $omitLogin = (!empty($_POST['omitLogin'])) ? true : false;
 
    //emailの形式チェック
@@ -84,7 +84,7 @@ require('common/head.php');
             <label for="pass" class="pm-login__label -pass">
                <h4 class="c-h4 pm-login__heading2">パスワード</h4>
                <div class="c-errMsg"><?= getErrMsg('pass'); ?></div>
-               <input type="text" name="pass" value="<?php if (!empty($_POST['pass'])) echo $_POST['pass']; ?>" id="pass" class="c-text pm-login__text -pass <?php if (!empty($err_msg['pass'])) echo 'c-errArea' ?>">
+               <input type="password" name="pass" value="<?php if (!empty($_POST['pass'])) echo $_POST['pass']; ?>" id="pass" class="c-text pm-login__text -pass <?php if (!empty($err_msg['pass'])) echo 'c-errArea' ?>">
             </label>
             <!-- savePass -->
             <label for="" class="pm-login__label -savePass">

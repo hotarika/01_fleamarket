@@ -4,8 +4,8 @@ require('f-function.php');
 // $_POST送信された場合
 if (!empty($_POST)) {
    // 変数にユーザー情報を代入
-   $email = $_POST['email'];
-   $pass = $_POST['pass'];
+   $email = trim($_POST['email']);
+   $pass = trim($_POST['pass']);
    $rePass = $_POST['rePass'];
 
    // バリデーションチェック
@@ -95,14 +95,14 @@ require('common/head.php');
             <label for="pass" class="pm-signup__label -pass">
                <h4 class="c-h4 pm-signup__heading2">パスワード</h4>
                <div class="c-errMsg"><?= getErrMsg('pass'); ?></div>
-               <input type="text" name="pass" value="<?php if (!empty($_POST['pass'])) echo $_POST['pass']; ?>" id="pass" class="c-text pm-signup__text -pass <?php if (!empty($err_msg['pass'])) echo 'c-errArea' ?>">
+               <input type="password" name="pass" value="<?php if (!empty($_POST['pass'])) echo $_POST['pass']; ?>" id="pass" class="c-text pm-signup__text -pass <?php if (!empty($err_msg['pass'])) echo 'c-errArea' ?>">
             </label>
 
             <!-- retype new pass  -->
             <label for="rePass" class="pm-signup__label -rePass">
                <h4 class="c-h4 pm-signup__heading2">パスワード（再入力）</h4>
                <div class="c-errMsg"><?= getErrMsg('rePass'); ?></div>
-               <input type="text" name="rePass" value="<?php if (!empty($_POST['rePass'])) echo $_POST['rePass']; ?>" id="rePass" class="c-text pm-signup__text -rePass <?php if (!empty($err_msg['rePass'])) echo 'c-errArea' ?>">
+               <input type="password" name="rePass" value="<?php if (!empty($_POST['rePass'])) echo $_POST['rePass']; ?>" id="rePass" class="c-text pm-signup__text -rePass <?php if (!empty($err_msg['rePass'])) echo 'c-errArea' ?>">
             </label>
 
             <!-- submit button -->
