@@ -180,8 +180,9 @@ require('common/head.php');
                      <label for="img" class="js-dropArea pm-profEdit__imgItem">
                         <input type="hidden" name="MAX_FILE_SIZE" value="3145728">
                         <input type="file" name="img" class="js-inputFile">
-                        <img src="<?= getFormData('img'); ?>" alt="" class="js-prevImg u-ajustImg">
-                        <div class="c-errMsg"><?= getErrMsg('img'); ?></div>
+                        <img src="<?= getFormData('img') ?? ' ' ?>" alt="" class="js-prevImg u-ajustImg">
+                        <div class=" c-errMsg"><?= getErrMsg('img'); ?>
+                        </div>
                      </label>
                   </div>
                </div>
