@@ -70,7 +70,7 @@ require('common/head.php');
          </div>
 
          <!-- 商品表示欄 -->
-         <div class="pm-index__prodWrap u-cf">
+         <div class="pm-index__prodWrap">
             <?php foreach ($dbProductData['prod_data'] as $val) : ?>
                <a href="c-productDetail.php<?= (!empty(appendGetParam())) ? appendGetParam() . '&prod_id=' . $val['id'] : '?prod_id=' . $val['id'] ?>" class="c-prodUnit pm-index__prodUnit <?php if ($val['user_id'] == @$_SESSION['user_id']) echo '-myProd'; ?>">
                   <div class="c-prodHead pm-index__prodHead <?php if (empty($val['img1'])) echo 'u-noImgBgc'; ?>">
@@ -87,7 +87,7 @@ require('common/head.php');
          <!-- paging -->
          <?php
          $link = $_SERVER['PHP_SELF'];
-         $param = '';
+         $param = ''; // 初期値
          $param = appendGetParam('p');
          pagination($currentPageNum, $dbProductData['total_page'], $param, $link);
          ?>

@@ -42,7 +42,7 @@ require('common/head.php');
          <!-- product list -->
          <div class="prodListWrap">
             <div class="c-h3 pm-mypage__heading2 -prod">商品登録一覧</div>
-            <div class="pm-mypage__prodWrap u-cf">
+            <div class="pm-mypage__prodWrap">
                <?php foreach ($dbProductData as $val) : ?>
                   <a href="a-productRegister.php?prod_id=<?= $val['id']; ?>" class="c-prodUnit pm-mypage__prodUnit">
                      <div class="c-prodHead pm-mypage__prodHead <?php if (empty($val['img1'])) echo 'u-noImgBgc'; ?>">
@@ -55,7 +55,6 @@ require('common/head.php');
                   </a>
                <?php endforeach; ?>
             </div>
-            <a href="" class="c-btn pm-mypage__allLook -prod">全てを表示</a>
          </div>
 
          <div class="pm-mypage__border"></div>
@@ -85,10 +84,7 @@ require('common/head.php');
                      </div>
                   </a>
                <?php endforeach; ?>
-
-
             </div>
-            <a href="" class="c-btn pm-mypage__allLook -msg">全てを表示</a>
          </div>
 
          <div class="pm-mypage__border"></div>
@@ -110,7 +106,6 @@ require('common/head.php');
                <?php endforeach; ?>
 
             </div>
-            <a href="" class="c-btn pm-mypage__allLook -like">全てを表示</a>
          </div>
       </main>
 
