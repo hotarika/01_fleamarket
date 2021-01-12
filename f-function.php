@@ -534,7 +534,7 @@ function mypageProductList($u_id)
 {
    try {
       $dbh = dbConnect();
-      $sql = 'SELECT * FROM product WHERE user_id = :u_id LIMIT 8';
+      $sql = 'SELECT * FROM product WHERE user_id = :u_id ORDER BY product.create_date DESC';
       $data = array(':u_id' => $u_id);
       $stmt = queryPost($dbh, $sql, $data);
 
@@ -558,8 +558,7 @@ function mypageBoardList()
          'SELECT * FROM message AS m
          WHERE m.id	>= all (SELECT s.id FROM message AS s WHERE m.board_id = s.board_id)
          AND :u_id IN (m.to_user, m.from_user)
-         ORDER BY m.send_date DESC
-         LIMIT 5';
+         ORDER BY m.send_date DESC';
       $data = array(':u_id' => $_SESSION['user_id']);
       $stmt = queryPost($dbh, $sql, $data);
 
@@ -629,8 +628,7 @@ function mypageLike($u_id)
       $sql =
          'SELECT * FROM `like` AS l
          LEFT JOIN product AS p ON l.product_id = p.id
-         WHERE l.user_id = :u_id
-         LIMIT 4';
+         WHERE l.user_id = :u_id';
       $data = array(':u_id' => $u_id);
       $stmt = queryPost($dbh, $sql, $data);
 
