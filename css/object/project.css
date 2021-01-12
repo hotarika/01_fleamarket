@@ -310,8 +310,8 @@
   position: relative;
   display: inline-block;
   margin-bottom: 6px;
-  width: 160px;
-  height: 160px;
+  width: 130px;
+  height: 130px;
   border-radius: 50%;
 }
 .pm-msg__yourInfoImg {
@@ -364,6 +364,9 @@
 }
 .pm-msg__msgImg {
   border-radius: 50%;
+  border: 1px solid #bdbdbd;
+  width: 50px;
+  height: 50px;
 }
 .pm-msg__msg {
   position: relative;

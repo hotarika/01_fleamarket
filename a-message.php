@@ -104,7 +104,7 @@ require('common/head.php');
                   <!-- myMsg -->
                   <div class="pm-msg__msgWrap u-cf">
                      <div class="pm-msg__msgImgSize -my">
-                        <img src="<?= $myUserInfo['img']; ?>" alt="" class="pm-msg__msgImg u-ajustImg">
+                        <img src="<?= $myUserInfo['img'] ?? './img/sample-img.png'; ?>" alt="" class="pm-msg__msgImg u-ajustImg -chatImg">
                      </div>
                      <p class="pm-msg__msg -my">
                         <span class="pm-msg__msgTriangle -my"></span>
@@ -117,7 +117,7 @@ require('common/head.php');
                   <!-- yourMsg -->
                   <div class="pm-msg__msgWrap u-cf">
                      <div class="pm-msg__msgImgSize -your">
-                        <img src="<?= $partnerUserInfo['img']; ?>" alt="" class="pm-msg__msgImg u-ajustImg">
+                        <img src="<?= $partnerUserInfo['img'] ?? './img/sample-img.png'; ?>" alt="" class="pm-msg__msgImg u-ajustImg -chatImg">
                      </div>
                      <p class="pm-msg__msg -your">
                         <span class="pm-msg__msgTriangle -your"></span>
