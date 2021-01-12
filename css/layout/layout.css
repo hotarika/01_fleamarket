@@ -3,68 +3,70 @@
  * -------------------------------- */
 /* header ------------------------- */
 .l-hdr {
-	width: 100%;
-	height: 80px;
-	background: #000;
+  width: 100%;
+  height: 80px;
+  background: #b70000;
 }
 /* header-nav a --------------------- */
 .l-hdr-nav {
-	display: flex;
-	align-items: center;
-	margin: 0 0 0 auto;
+  display: flex;
+  align-items: center;
+  margin: 0 0 0 auto;
 }
 
 /* --------------------------------
  * contents area (1カラム)
  * -------------------------------- */
 .lm1 {
-	margin: 40px auto 60px;
-	width: 1000px;
+  margin: 40px auto 60px;
+  width: 1000px;
 }
 
 /* --------------------------------
  * contents area (2カラム)
  * -------------------------------- */
 .lw {
-	margin: 40px auto 60px;
-	width: 1000px;
+  margin: 40px auto 60px;
+  width: 1000px;
 }
 /* layout main 2column ------------ */
 .lm2 {
-	float: left;
-	margin: 0 10px;
-	width: 780px;
-	border-radius: 5px;
+  float: left;
+  margin: 0 10px;
+  width: 780px;
+  border-radius: 5px;
 }
 /* layout side 2column ------------ */
 .ls2 {
-	float: left;
-	margin: 0 10px;
-	padding: 0 10px;
-	width: 180px;
-	height: 100%;
-	border-radius: 5px;
-	background: #f0f3f5;
+  float: left;
+  margin: 0 10px;
+  padding: 0 10px;
+  width: 180px;
+  height: 100%;
+  border-radius: 5px;
+  background: #f0f3f5;
 }
 
 /* --------------------------------
  * side menu
  * -------------------------------- */
 .l-side {
-	float: left;
-	margin: 0 10px;
-	padding: 25px 20px;
-	width: 180px;
-	height: 500px;
-	border-radius: 5px;
-	background: #f0f3f5;
+  float: left;
+  margin: 0 10px;
+  padding: 25px 20px;
+  width: 180px;
+  height: 500px;
+  border-radius: 5px;
+  background: #f0f3f5;
 }
 
 /* --------------------------------
  * footer
  * -------------------------------- */
 .l-ftr {
-	width: 100%;
-	height: 60px;
-	background: #f0f3f5;
+  width: 100%;
+  height: 60px;
+  background: #b70000;
+  color: white;
+  font-size: 11px;
 }
