@@ -92,9 +92,11 @@ require('common/head.php');
          </div>
          <div class="pm-prodDetail__btm -right">
             <p class="pm-prodDetail__price">¥<?= number_format($viewData['price']); ?>-</p>
-            <form action="" method="post" class="pm-prodDetail__form">
-               <input type="submit" name="submit" class="c-btn pm-prodDetail__submit" value="購入" onclick="return <?php if ($_SESSION['user_id'] != $viewData['user_id']) : ?> confirm('購入してもよろしいですか？'); <?php else : ?> alert('自分の登録した商品のため、購入することはできません。');<?php endif ?>">
-            </form>
+            <?php if (!empty($_SESSION['user_id'])) : ?>
+               <form action="" method="post" class="pm-prodDetail__form">
+                  <input type="submit" name="submit" class="c-btn pm-prodDetail__submit" value="購入" onclick="return <?php if ($_SESSION['user_id'] != $viewData['user_id']) : ?> confirm('購入してもよろしいですか？'); <?php else : ?> alert('自分の登録した商品のため、購入することはできません。');<?php endif ?>">
+               </form>
+            <?php endif; ?>
          </div>
       </div>
 
