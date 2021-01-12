@@ -28,7 +28,7 @@ if (!empty($_POST) && $_SESSION['user_id'] != $viewData['user_id']) {
          $data_prod = array(':b_id' => $_SESSION['user_id'], ':p_id' => $viewData['id']);
          $stmt_prod = queryPost($dbh, $sql_prod, $data_prod);
 
-         //board登録 sql
+         //board登録
          $dbh = dbConnect();
          $sql_board = 'INSERT INTO board (user_id, buyer_id, product_id, create_date) VALUES (:u_id, :b_id, :p_id, :date)';
          $data_board = array(':u_id' => $viewData['user_id'], ':b_id' => $_SESSION['user_id'], ':p_id' => $prod_id, ':date' => date('Y-m-d H:i:s'));
@@ -93,7 +93,7 @@ require('common/head.php');
          <div class="pm-prodDetail__btm -right">
             <p class="pm-prodDetail__price">¥<?= number_format($viewData['price']); ?>-</p>
             <form action="" method="post" class="pm-prodDetail__form">
-               <input type="submit" name="submit" class="c-btn pm-prodDetail__submit" value="購入">
+               <input type="submit" name="submit" class="c-btn pm-prodDetail__submit" value="購入" onclick="return <?php if ($_SESSION['user_id'] != $viewData['user_id']) : ?> confirm('購入してもよろしいですか？'); <?php else : ?> alert('自分の登録した商品のため、購入することはできません。');<?php endif ?>">
             </form>
          </div>
       </div>
