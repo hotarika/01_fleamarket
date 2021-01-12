@@ -364,9 +364,9 @@ function getProductList($limit, $offset, $category = '', $sort = '')
    try {
       $dbh = dbConnect();
       // 商品表示用（検索含む）のSQL文作成
-      $sql = 'SELECT * FROM product';
+      $sql = 'SELECT * FROM product WHERE delete_flag = 0 AND buyer_id IS NULL';
       // カテゴリの選択
-      if (!empty($category)) $sql .= ' WHERE category_id = ' . $category;
+      if (!empty($category)) $sql .= ' AND category_id = ' . $category;
       // 昇順・降順の選択
       if (!empty($sort)) {
          switch ($sort) {
@@ -556,7 +556,9 @@ function mypageBoardList()
       $dbh = dbConnect();
       $sql =
          'SELECT * FROM message AS m
-         WHERE m.id	>= all (SELECT s.id FROM message AS s WHERE m.board_id = s.board_id)
+         WHERE m.id	>= all (
+            SELECT s.id FROM message AS s WHERE m.board_id = s.board_id
+         )
          AND :u_id IN (m.to_user, m.from_user)
          ORDER BY m.send_date DESC';
       $data = array(':u_id' => $_SESSION['user_id']);
@@ -805,7 +807,7 @@ function pagination($currentPageNum, $totalPageNum, $param = '', $link, $pageCol
 
    echo '<div class="c-paging">';
    echo '<ul class="c-pagingItems u-cf">';
-   // 1ページ以外の場合は「<」を設定
+   // [最初のページへ] 1ページ以外の場合は「<」を設定
    if ($currentPageNum != 1) {
       echo '<a href="' . $link . '?p=1' . $param . '" class="c-pagingItem"><li>&lt;</li></a>';
    }
@@ -817,8 +819,7 @@ function pagination($currentPageNum, $totalPageNum, $param = '', $link, $pageCol
       echo '"><li>' . $i . '</li></a>';
    }
 
-
-   // 最後のページ以外の場合は「>」を設定
+   // [最後のページへ] 最後のページ以外の場合は「>」を設定
    if ($currentPageNum != $totalPageNum && $totalPageNum > 1) {
       echo '<a href="' . $link . '?p=' . $totalPageNum . $param . '" class="c-pagingItem"><li>&gt;</li></a>';
    }
