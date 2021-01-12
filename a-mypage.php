@@ -58,6 +58,7 @@ require('common/head.php');
          </div>
 
          <div class="pm-mypage__border"></div>
+
          <!-- message list -->
          <div class="msgListWrap">
             <div class="c-h3 pm-mypage__heading2 -msg">連絡掲示板一覧</div>
@@ -76,11 +77,11 @@ require('common/head.php');
                      $partnerUser = getUser($val['to_user']);
                   }
                   ?>
-                  <a href="a-message.php?board_id=<?= $val["board_id"]; ?>" class="pm-mypage__msgItemsLink">
+                  <a href="a-message.php?board_id=<?= $val["id"]; ?>" class="pm-mypage__msgItemsLink">
                      <div class="pm-mypage__msgItems -board">
-                        <div class="pm-mypage__msgItem -date -board"><?= $val['send_date']; ?></div>
-                        <div class="pm-mypage__msgItem -you -board"><?= (empty($partnerUser['username'])) ? $partnerUser['email'] : $partnerUser['username']; ?></div>
-                        <div class="pm-mypage__msgItem -msg -board"><?= $val['msg']; ?></div>
+                        <div class="pm-mypage__msgItem -date -board"><?= $val['send_date'] ?? $val['create_date']; ?></div>
+                        <div class="pm-mypage__msgItem -you -board"><?= (empty($partnerUser['username'])) ? $partnerUser['email'] ?? '-' : $partnerUser['username'] ?? '-'; ?></div>
+                        <div class="pm-mypage__msgItem -msg -board"><?= $val['msg'] ?? '-'; ?></div>
                      </div>
                   </a>
                <?php endforeach; ?>
@@ -88,6 +89,7 @@ require('common/head.php');
          </div>
 
          <div class="pm-mypage__border"></div>
+
          <!-- like list -->
          <div class="likeListWrap">
             <div class="c-h3 pm-mypage__heading2 -like">お気に入り一覧</div>
@@ -96,7 +98,7 @@ require('common/head.php');
                <?php foreach ($dbLikeData as $val) : ?>
                   <a href="c-productDetail.php?prod_id=<?= $val['product_id'] ?>" class=" c-prodUnit pm-mypage__likeUnit">
                      <div class="c-prodHead pm-mypage__likeHead <?php if (empty($val['img1'])) echo 'u-noImgBgc'; ?>">
-                        <img class="c-prodImg pm-mypage__likeImg u-ajustImg" src="<?= showImg($val['img1']); ?>" alt="マウンテンバイク">
+                        <img class="c-prodImg pm-mypage__likeImg u-ajustImg" src="<?= showImg($val['img1']); ?>" alt="">
                      </div>
                      <div class="c-prodBody pm-mypage__likeBody">
                         <p class="c-prodName pm-mypage__likeName"><?= $val['name']; ?></p>

@@ -555,11 +555,11 @@ function mypageBoardList()
    try {
       $dbh = dbConnect();
       $sql =
-         'SELECT * FROM message AS m
-         WHERE m.id	>= all (
-            SELECT s.id FROM message AS s WHERE m.board_id = s.board_id
-         )
-         AND :u_id IN (m.to_user, m.from_user)
+         'SELECT b.id, b.user_id as to_user, b.buyer_id as from_user, m.msg, m.send_date, b.create_date FROM board AS b
+         LEFT JOIN (SELECT * from message AS m WHERE (m.board_id, m.send_date)
+         IN (SELECT m.board_id, max(m.send_date) FROM message AS m GROUP BY m.board_id)) AS m
+         ON b.id = m.board_id
+         WHERE (b.user_id = :u_id OR b.buyer_id = :u_id) AND b.delete_flag = 0
          ORDER BY m.send_date DESC';
       $data = array(':u_id' => $_SESSION['user_id']);
       $stmt = queryPost($dbh, $sql, $data);
