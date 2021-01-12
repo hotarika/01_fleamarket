@@ -74,10 +74,10 @@ require('common/head.php');
             <?php foreach ($dbProductData['prod_data'] as $val) : ?>
                <a href="c-productDetail.php<?= (!empty(appendGetParam())) ? appendGetParam() . '&prod_id=' . $val['id'] : '?prod_id=' . $val['id'] ?>" class="c-prodUnit pm-index__prodUnit <?php if ($val['user_id'] == @$_SESSION['user_id']) echo '-myProd'; ?>">
                   <div class="c-prodHead pm-index__prodHead <?php if (empty($val['img1'])) echo 'u-noImgBgc'; ?>">
-                     <img class="c-prodImg pm-index__prodImg u-ajustImg" src="<?= showImg($val['img1']); ?>" alt="マウンテンバイク">
+                     <img class="c-prodImg pm-index__prodImg u-ajustImg" src="<?= showImg($val['img1']); ?>" alt="">
                   </div>
                   <div class="c-prodBody pm-index__prodBody">
-                     <p class="c-prodName pm-index__prodName"><?= $val['id']; ?> <?= $val['name']; ?></p>
+                     <p class="c-prodName pm-index__prodName"><?= $val['name']; ?></p>
                      <p class="c-prodPrice pm-index__prodPrice">¥<?= number_format($val['price']); ?></p>
                   </div>
                </a>

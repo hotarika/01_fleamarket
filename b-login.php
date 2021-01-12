@@ -95,7 +95,7 @@ require('common/head.php');
             <!-- submit button -->
             <input type="submit" value="ログイン" class="c-btn pm-login__submit">
             <!-- pass reminder -->
-            <p class="pm-login__passReminder"><a href="b-passRemind.php">パスワードを忘れた方はコチラ</a></p>
+            <p class="pm-login__passReminder" style="display:none"><a href="b-passRemind.php">パスワードを忘れた方はコチラ</a></p>
          </form>
 
       </div>
