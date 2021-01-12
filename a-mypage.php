@@ -94,7 +94,7 @@ require('common/head.php');
             <div class="pm-mypage__likeWrap u-cf">
 
                <?php foreach ($dbLikeData as $val) : ?>
-                  <a href="c-productDetail.php" class="c-prodUnit pm-mypage__likeUnit">
+                  <a href="c-productDetail.php?prod_id=<?= $val['product_id'] ?>" class=" c-prodUnit pm-mypage__likeUnit">
                      <div class="c-prodHead pm-mypage__likeHead <?php if (empty($val['img1'])) echo 'u-noImgBgc'; ?>">
                         <img class="c-prodImg pm-mypage__likeImg u-ajustImg" src="<?= showImg($val['img1']); ?>" alt="マウンテンバイク">
                      </div>
