@@ -36,7 +36,7 @@ define('MSG02', 'Emailの形式で入力してください');
 define('MSG03', 'パスワード（再入力）が合っていません');
 define('MSG04', '半角英数字のみご利用いただけます');
 define('MSG05', '4文字以上で入力してください');
-define('MSG06', '256文字以内で入力してください');
+define('MSG06', '255文字以内で入力してください');
 define('MSG07', 'エラーが発生しました。しばらく経ってからやり直してください。');
 define('MSG08', 'そのEmailは既に登録されています');
 define('MSG09', 'メールアドレスまたはパスワードが違います');
@@ -66,7 +66,8 @@ $err_msg = array();
 // 未入力チェック
 function validRequired($str, $key)
 {
-   if ($str === '') {
+   // if ($str == '' || $str == 0) {
+   if ($str === '' || $str === '0' || $str === 0) {
       global $err_msg;
       $err_msg[$key] = MSG01;
    }
@@ -126,7 +127,7 @@ function validHalf($str, $key)
    }
 }
 // 最大文字数チェック
-function validMaxLen($str, $key, $max = 256)
+function validMaxLen($str, $key, $max = 255)
 {
    if (mb_strlen($str) > $max) {
       global $err_msg;

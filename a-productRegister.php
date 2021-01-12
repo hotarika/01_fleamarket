@@ -28,45 +28,24 @@ if (!empty($_POST)) {
    $img3 = (!empty($_FILES['img3']['name'])) ? uploadImg($_FILES['img3'], 'img3') : '';
    $img3 = (empty($img3) && !empty($dbFormData['img3'])) ? $dbFormData['img3'] : $img3;
 
-   // 更新の場合はDBの情報と入力情報が異なる場合にバリデーションを行う
-   if (empty($dbFormData)) {
-      //未入力チェック
-      validRequired($name, 'name');
-      //最大文字数チェック
-      validMaxLen($name, 'name');
-      //セレクトボックスチェック
-      validSelect($category, 'category_id');
-      //最大文字数チェック
-      validMaxLen($detail, 'detail', 500);
-      //未入力チェック
-      validRequired($price, 'price');
-      //半角数字チェック
-      validNumber($price, 'price');
-   } else {
-      if ($dbFormData['name'] !== $name) {
-         //未入力チェック
-         validRequired($name, 'name');
-         //最大文字数チェック
-         validMaxLen($name, 'name');
-      }
-      if ($dbFormData['category_id'] !== $category) {
-         //セレクトボックスチェック
-         validSelect($category, 'category_id');
-      }
-      if ($dbFormData['detail'] !== $detail) {
-         //最大文字数チェック
-         validMaxLen($detail, 'detail', 500);
-      }
-      if ($dbFormData['price'] != $price) { //前回まではキャストしていたが、ゆるい判定でもいい
-         //未入力チェック
-         validRequired($price, 'price');
-         //半角数字チェック
-         validNumber($price, 'price');
-      }
-   }
+
+   // 商品名
+   validRequired($name, 'name'); //未入力チェック
+   validMaxLen($name, 'name'); //最大文字数チェック
+
+   // カテゴリ
+   validRequired($category, 'category'); //未入力チェック
+   validSelect($category, 'category'); //セレクトボックスチェック
+
+   // 詳細
+   validMaxLen($detail, 'detail', 500); //最大文字数チェック
+
+   // 商品価格
+   validRequired($price, 'price'); //未入力チェック
+   validNumber($price, 'price'); //半角数字チェック
+
 
    if (empty($err_msg)) {
-
       try {
          $dbh = dbConnect();
          if ($edit_flg) {
@@ -131,7 +110,9 @@ require('common/head.php');
                <label for="name" class="pm-prodRegist__label -name">
                   <h4 class="c-h4 pm-prodRegist__heading2 -require">商品名</h4>
                   <input type="text" name="name" value="<?= getFormData('name'); ?>" id="name" class="c-text pm-prodRegist__text -name">
+                  <div class="c-errMsg"><?= getErrMsg('name'); ?></div>
                </label>
+
                <!-- category -->
                <label for="cat_id" class="pm-prodRegist__label -cat_id">
                   <h4 class="c-h4 pm-prodRegist__heading2 -require">カテゴリ</h4>
@@ -143,19 +124,28 @@ require('common/head.php');
                         </option>
                      <?php }; ?>
                   </select>
+                  <div class="c-errMsg"><?= getErrMsg('category'); ?></div>
                </label>
+
                <!-- detail -->
                <label for="detail" class="pm-prodRegist__label -detail">
-                  <h4 class="c-h4 pm-prodRegist__heading2">詳細</h4>
-                  <textarea name="detail" value="<?= getFormData('detail'); ?>" id="js-detail" class="c-text pm-prodRegist__text -detail" cols="50" rows="100"></textarea>
-                  <p class="pm-prodRegist__counter"><span id="js-counter">0</span>/500文字</p>
+                  <h4 class="c-h4 pm-prodRegist__heading2">商品説明</h4>
+                  <textarea name="detail" id="js-detail" class="c-text pm-prodRegist__text -detail" cols="50" rows="100"><?= getFormData('detail'); ?></textarea>
+                  <div class="pm-prodRegist__underItemsWrap">
+                     <div class="c-errMsg"><?= getErrMsg('detail'); ?></div>
+                     <p class="pm-prodRegist__counter"><span id="js-counter">0</span>/500文字</p>
+                  </div>
+
                </label>
+
                <!-- price -->
                <label for="price" class="pm-prodRegist__label -price">
                   <h4 class="c-h4 pm-prodRegist__heading2 -require">金額</h4>
                   <input type="text" name="price" value="<?= getFormData('price'); ?>" id="price" class="c-text pm-prodRegist__text -price">
                   <span>円</span>
+                  <div class="c-errMsg"><?= getErrMsg('price'); ?></div>
                </label>
+
                <!-- images -->
                <div class="pm-prodRegist__imgItems">
                   <div class="pm-prodRegist__imgUnit -img1">
@@ -180,6 +170,7 @@ require('common/head.php');
                      </label>
                   </div>
                </div>
+
                <input type="submit" value="<?= ($edit_flg) ? '更新する' : '出品する'; ?>" class="c-btn pm-prodRegist__submit">
             </form>
          </div>
