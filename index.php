@@ -77,7 +77,9 @@ require('common/head.php');
                      <img class="c-prodImg pm-index__prodImg u-ajustImg" src="<?= showImg($val['img1']); ?>" alt="">
                   </div>
                   <div class="c-prodBody pm-index__prodBody">
-                     <p class="c-prodName pm-index__prodName"><?= $val['name']; ?></p>
+                     <p class="c-prodName pm-index__prodName">
+                        <?//= $val['id']; ?><?= $val['name']; ?>
+                     </p>
                      <p class="c-prodPrice pm-index__prodPrice">¥<?= number_format($val['price']); ?></p>
                   </div>
                </a>
