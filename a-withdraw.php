@@ -10,13 +10,15 @@ require('f-auth.php');
 if (!empty($_POST)) {
    try {
       $dbh = dbConnect();
-      $sql1 = 'UPDATE users SET  delete_flag = 1 WHERE id = :us_id';
-      $sql2 = 'UPDATE product SET  delete_flag = 1 WHERE user_id = :us_id';
-      $sql3 = 'UPDATE like SET  delete_flag = 1 WHERE user_id = :us_id';
+      $sql1 = 'UPDATE users SET delete_flag = 1 WHERE id = :us_id';
+      $sql2 = 'UPDATE product SET delete_flag = 1 WHERE user_id = :us_id';
+      $sql3 = 'UPDATE `like` SET delete_flag = 1 WHERE user_id = :us_id';
+      $sql4 = 'UPDATE board SET delete_flag = 1 WHERE user_id = :us_id OR buyer_id = :us_id';
       $data = array(':us_id' => $_SESSION['user_id']);
       $stmt1 = queryPost($dbh, $sql1, $data);
       $stmt2 = queryPost($dbh, $sql2, $data);
       $stmt3 = queryPost($dbh, $sql3, $data);
+      $stmt4 = queryPost($dbh, $sql4, $data);
 
       // クエリ実行成功の場合（最悪userテーブルのみ削除成功していれば良しとする）
       if ($stmt1) {
@@ -58,7 +60,7 @@ require('common/head.php');
             <h2 class="c-h2 pm-withdraw__heading">退会</h2>
             <form action="" method="post" class="pm-withdraw__form">
                <!-- submit button -->
-               <input type="submit" name="submit" value="退会する" class="c-btn pm-withdraw__submit">
+               <input type="submit" name="submit" value="退会する" class="c-btn pm-withdraw__submit" onclick="return confirm('本当に退会してもよろしいですか？')">
             </form>
          </div>
          <a href="a-mypage.php" class="c-rtnBtn">&lt&lt マイページへ戻る</a>
