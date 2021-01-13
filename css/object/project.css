@@ -412,7 +412,7 @@
   bottom: 12px;
 }
 .pm-msg__time.-your {
-  right: -39px;
+  right: -46px;
   bottom: 0px;
 }
 
@@ -450,7 +450,7 @@
   width: 730px;
   height: 30px;
   border: 1px solid rgb(190, 189, 189);
-  border-radius: 50px;
+  border-radius: 5px;
   font-size: 1.3rem;
 }
 .pm-msg__msgText::-webkit-input-placeholder {
