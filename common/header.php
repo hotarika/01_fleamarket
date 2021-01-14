@@ -1,6 +1,6 @@
 <?php
 if (!empty($_SESSION)) {
-   $headerSession = getUser($_SESSION['user_id']);
+   $headerSession = getUser($_SESSION['user_id'] ?? '');
    $headerUsername = $headerSession['username'] ?? '名前未設定';
 }
 
