@@ -28,7 +28,7 @@ require('common/head.php');
    <?php require('common/header.php'); ?>
 
    <!-- contents -->
-   <div class="lw pw-history u-cf">
+   <div class="lw pm-history u-cf">
 
       <!-- main -->
       <main class="lm2 pm-history">

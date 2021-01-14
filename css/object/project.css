@@ -558,6 +558,9 @@
 .p-history__heading {
   text-align: center;
 }
+.pm-history {
+  min-height: 80vh;
+}
 .pm-history__prodUnit {
   display: flex;
   margin-bottom: 18px;
