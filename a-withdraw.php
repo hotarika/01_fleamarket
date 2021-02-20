@@ -60,7 +60,11 @@ require('common/head.php');
             <h2 class="c-h2 pm-withdraw__heading">退会</h2>
             <form action="" method="post" class="pm-withdraw__form">
                <!-- submit button -->
-               <input type="submit" name="submit" value="退会する" class="c-btn pm-withdraw__submit" onclick="return confirm('本当に退会してもよろしいですか？')">
+               <?php if ($_SESSION['user_id'] != 6) : ?>
+                  <input type="submit" name="submit" value="退会する" class="c-btn pm-withdraw__submit" onclick="return confirm('本当に退会してもよろしいですか？')">
+               <?php else : ?>
+                  <input type="" name="" value="退会する" class="c-btn pm-withdraw__submit" onclick="return alert('ゲストユーザーは退会できません')">
+               <?php endif ?>
             </form>
          </div>
          <a href="a-mypage.php" class="c-rtnBtn">&lt&lt マイページへ戻る</a>

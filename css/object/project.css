@@ -856,6 +856,7 @@
 .pm-withdraw__submit {
   width: 120px;
   height: 40px;
+  text-align: center;
   font-size: 1.5rem;
 }
 /* ********************************
