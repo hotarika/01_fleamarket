@@ -97,8 +97,12 @@ require('common/head.php');
             <!-- pass reminder -->
             <p class="pm-login__passReminder" style="display:none"><a href="b-passRemind.php">パスワードを忘れた方はコチラ</a></p>
          </form>
-
       </div>
+      <form action="" method="post" style="text-align:right;">
+         <input type="hidden" name="email" value="guest@example.com">
+         <input type="hidden" name="pass" value="password">
+         <button type="submit" style="margin-top:10px; border:none; color: white;padding:5px 10px; border-radius:5px; background-color: #b70000; font-size:15px;">新規登録せずに、機能を試したい方はこちら</button>
+      </form>
    </main>
 
    </div><!-- lw end -->
